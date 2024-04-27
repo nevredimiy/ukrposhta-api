@@ -1,0 +1,7 @@
+{'name': 'Богодухівський', 'district_id': '390'}
+{'name': 'Ізюмський', 'district_id': '391'}
+{'name': 'Красноградський', 'district_id': '392'}
+{'name': "Куп'янський", 'district_id': '393'}
+{'name': 'Лозівський', 'district_id': '394'}
+{'name': 'Харківський', 'district_id': '395'}
+{'name': 'Чугуївський', 'district_id': '396'}
