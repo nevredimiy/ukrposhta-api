@@ -2,3 +2,5 @@
 .env
 src/__pycache__/
 for-google-sheets.json
+data/all_cities.txt
+data/documentation/
