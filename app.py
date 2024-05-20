@@ -4,10 +4,11 @@ from src.ukrposhtaApi import *
 bearer = os.getenv('sandbox_bearer')
 token = os.getenv('SAND_COUNTERPARTY_TOKEN')
 ukrposhta = UkrposhtaCreateShipment(bearer)
+ukrposhtaAddress = UkrposhtaAddressClassifier(bearer)
 
-def main():
-    postcodeSender = '61091'
-    postcodeRecipient = '90000'
+def createShipment():
+    postcodeSender = input("Введіть індекс відправника:")
+    postcodeRecipient = input("Введіть індекс отримувача:")
     resp = ukrposhta.availabilityChecking(senderPostcode=postcodeSender, recipientPostcode=postcodeRecipient)
     if resp['code'] == 'SUCCESS':
         print(resp['description'])
@@ -76,5 +77,18 @@ def lastVerdionDoc():
     resp = ukrposhta.createAddressId(data)
     print(resp)
 
+def getPostOfficeByPostindex():
+    postindex = input('Введіть номер індекса:')
+    ukrposhtaAddress.getAddressByIndex(postindex)
+
+def main():
+    inp = input("Знайти відділення(ЗВ) чи створити відправлення(СВ): ")
+    if inp == 'ЗВ':
+        getPostOfficeByPostindex()
+    elif inp == 'СВ':
+        createShipment()
+    else:
+        print('Ви повинні ввести \'ЗВ\' або \'СВ\': ')
+        main()
 if __name__ == '__main__':
     main()

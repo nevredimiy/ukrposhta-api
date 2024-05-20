@@ -100,7 +100,6 @@ class UkrposhtaAddressClassifier:
         result = self.request_data(endPoint, param)
         res = result["Entries"]["Entry"][0]
         print(f'{res['PDCITYTYPE_UA']} {res['PO_SHORT']} - {res['ADDRESS']}: {res['PHONE']}')
-
         return res
 
     def getPostofficeOpenHoursByIndex(self, postcode):
@@ -201,5 +200,5 @@ class UkrposhtaCreateShipment:
     #створення відправлення
     def shipments(self, token, data):
         resp = self.request_data(end_point=f'shipments?token={token}', data=data)
-        print(resp)
+        print(f'Баркод - {resp["barcode"]}, Вартість доставки - {resp["deliveryPrice"]}')
         return resp
